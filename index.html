@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitForce — Stop Running Your Fitness Business on Spreadsheets</title>
+  <meta name="description" content="The all-in-one platform that lets independent trainers manage clients, buy health insurance, get liability coverage, and handle taxes — without the admin headache.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo">
+        <svg class="nav__logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <defs><linearGradient id="logo-g" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#F97316"/><stop offset=".5" stop-color="#E11D48"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+          <rect width="32" height="32" rx="9" fill="url(#logo-g)"/>
+          <path d="M19 5L10 17.5h5.5L13 27l9.5-13H17L19 5z" fill="#fff" fill-opacity=".95"/>
+        </svg>
+        <span>FitForce</span>
+      </a>
+      <a href="#signup" class="btn btn--sm btn--nav">Get Early Access</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="signup">
+    <div class="container hero__inner">
+      <div class="hero__badge">Early access — founder pricing available</div>
+      <h1 class="hero__title">You're a Great Trainer.<br class="hide-mobile"> <span class="hero__title-accent">Now Be a Great Business.</span></h1>
+      <p class="hero__subtitle">Scheduling, insurance, taxes, waivers, certifications, client management — independent trainers juggle all of it alone. FitForce puts it in one place so you can focus on training.</p>
+      <form class="hero__form" id="hero-form" aria-label="Join waitlist">
+        <div class="form-group">
+          <input
+            type="email"
+            class="form__input"
+            id="hero-email"
+            placeholder="Enter your email"
+            required
+            autocomplete="email"
+            aria-label="Email address"
+          >
+          <button type="submit" class="btn btn--primary btn--form">
+            <span class="btn__text">Join the Waitlist</span>
+            <span class="btn__loading" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="40 60" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 10 10" to="360 10 10" dur="0.8s" repeatCount="indefinite"/></circle></svg>
+            </span>
+          </button>
+        </div>
+        <div class="form__message" id="hero-message" role="status" aria-live="polite"></div>
+      </form>
+      <p class="hero__proof"><strong>500+</strong> trainers, coaches, and gym owners already on the waitlist</p>
+    </div>
+  </header>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">One Platform. Zero Busywork.</h2>
+        <p class="section-header__subtitle">Scheduling app, payment tool, insurance broker, tax spreadsheet, waiver service, cert tracker — cancel them all.</p>
+      </div>
+      <div class="features__grid">
+
+        <div class="feature-card" data-animate>
+          <div class="feature-card__icon feature-card__icon--clients">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="feature-card__title">Clients & Scheduling</h3>
+          <p class="feature-card__text">Booking, progress tracking, payments, and messaging for every client — in one dashboard. Clients book themselves. You stop playing text-tag to fill your calendar.</p>
+        </div>
+
+        <div class="feature-card" data-animate>
+          <div class="feature-card__icon feature-card__icon--health">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="feature-card__title">Health Insurance</h3>
+          <p class="feature-card__text">Being self-employed shouldn't mean overpaying for coverage. Buy into group health plans at rates you'd normally need 50+ employees to access.</p>
+        </div>
+
+        <div class="feature-card" data-animate>
+          <div class="feature-card__icon feature-card__icon--ai">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 1 2 2v1a2 2 0 0 1-4 0V4a2 2 0 0 1 2-2z"/><path d="M5 10a7 7 0 0 1 14 0v2a7 7 0 0 1-14 0v-2z"/><path d="M8 21h8"/><path d="M12 17v4"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>
+          </div>
+          <h3 class="feature-card__title">AI Assistant</h3>
+          <p class="feature-card__text">Generate workout programs, nutrition guides, and check-in messages in seconds. Personalize plans for every client without spending your Sunday night writing them all.</p>
+        </div>
+
+        <div class="feature-card" data-animate>
+          <div class="feature-card__icon feature-card__icon--shield">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3 class="feature-card__title">Insurance & Waivers</h3>
+          <p class="feature-card__text">Professional liability coverage, digital waivers, PAR-Q forms, and informed consent — all built in. Clients sign on their phone before the first session. You're covered from day one.</p>
+        </div>
+
+        <div class="feature-card" data-animate>
+          <div class="feature-card__icon feature-card__icon--finance">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 9h20"/><path d="M9 21V9"/><path d="M13 15h4"/><path d="M13 12h4"/><path d="M5 12h2"/><path d="M5 15h2"/></svg>
+          </div>
+          <h3 class="feature-card__title">Tax Forms & Finance</h3>
+          <p class="feature-card__text">Track income, expenses, and mileage year-round. When tax season hits, export clean reports and 1099-ready summaries instead of scrambling through bank statements.</p>
+        </div>
+
+        <div class="feature-card" data-animate>
+          <div class="feature-card__icon feature-card__icon--certs">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M8 17v4"/><path d="M16 17v4"/><circle cx="12" cy="13" r="1.5"/></svg>
+          </div>
+          <h3 class="feature-card__title">Credential Tracking</h3>
+          <p class="feature-card__text">CPR, NASM, ACE, continuing ed — all your certs in one place with expiration alerts. Never get caught with lapsed credentials that void your insurance or violate gym policy.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Set Up Between Clients</h2>
+        <p class="section-header__subtitle">No onboarding calls, no contracts, no IT person. If you can post an Instagram story, you can set up FitForce.</p>
+      </div>
+      <div class="steps">
+        <div class="step" data-animate>
+          <div class="step__number">1</div>
+          <h3 class="step__title">Sign Up</h3>
+          <p class="step__text">Create your account and answer a few questions about your business. We'll set up your dashboard around how you actually work.</p>
+        </div>
+        <div class="step__connector" aria-hidden="true"></div>
+        <div class="step" data-animate>
+          <div class="step__number">2</div>
+          <h3 class="step__title">Add Your Clients</h3>
+          <p class="step__text">Import from a spreadsheet or add them one by one. Each client gets a profile with their history, goals, and upcoming sessions.</p>
+        </div>
+        <div class="step__connector" aria-hidden="true"></div>
+        <div class="step" data-animate>
+          <div class="step__number">3</div>
+          <h3 class="step__title">Run Everything From One Place</h3>
+          <p class="step__text">Schedule sessions, collect payments, generate programs, buy insurance — all without switching apps or logging into five different tools.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof / Stats -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat" data-animate>
+          <div class="stat__number" data-count="12" data-suffix="hrs">0 hrs</div>
+          <p class="stat__label">per week the average trainer spends on scheduling, invoicing, and admin</p>
+        </div>
+        <div class="stat" data-animate>
+          <div class="stat__number" data-prefix="$" data-count="6200">$0</div>
+          <p class="stat__label">per year spent on separate tools that don't talk to each other</p>
+        </div>
+        <div class="stat" data-animate>
+          <div class="stat__number" data-count="4" data-suffix="in 5">0 in 5</div>
+          <p class="stat__label">independent fitness pros are training without any liability coverage</p>
+        </div>
+        <div class="stat" data-animate>
+          <div class="stat__number" data-count="1">0</div>
+          <p class="stat__label">platform to handle all of it — that's what we're building</p>
+        </div>
+      </div>
+      <p class="stats__source">Industry estimates based on published research and our conversations with independent fitness professionals</p>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta" id="final-cta">
+    <div class="container final-cta__inner">
+      <h2 class="final-cta__title">Stop Paying More to Do More Work</h2>
+      <p class="final-cta__subtitle">Join the waitlist for early access and founder pricing. We're opening spots in batches — the earlier you sign up, the less you pay.</p>
+      <form class="hero__form" id="footer-form" aria-label="Join waitlist">
+        <div class="form-group">
+          <input
+            type="email"
+            class="form__input"
+            id="footer-email"
+            placeholder="Enter your email"
+            required
+            autocomplete="email"
+            aria-label="Email address"
+          >
+          <button type="submit" class="btn btn--primary btn--form">
+            <span class="btn__text">Join the Waitlist</span>
+            <span class="btn__loading" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="40 60" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 10 10" to="360 10 10" dur="0.8s" repeatCount="indefinite"/></circle></svg>
+            </span>
+          </button>
+        </div>
+        <div class="form__message" id="footer-message" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#" class="nav__logo">
+          <svg class="nav__logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <defs><linearGradient id="logo-g2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#F97316"/><stop offset=".5" stop-color="#E11D48"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+            <rect width="32" height="32" rx="9" fill="url(#logo-g2)"/>
+            <path d="M19 5L10 17.5h5.5L13 27l9.5-13H17L19 5z" fill="#fff" fill-opacity=".95"/>
+          </svg>
+          <span>FitForce</span>
+        </a>
+        <p class="footer__tagline">The business platform for fitness professionals.</p>
+      </div>
+      <div class="footer__links">
+        <a href="mailto:hello@fitforce.com">Contact</a>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 FitForce. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

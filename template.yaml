@@ -1,0 +1,154 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: FitForce Landing Page — Email collection backend + static hosting
+
+Parameters:
+  DomainName:
+    Type: String
+    Default: ''
+    Description: Custom domain name (leave empty to use CloudFront default)
+  Stage:
+    Type: String
+    Default: prod
+    AllowedValues: [prod, staging]
+
+Globals:
+  Function:
+    Timeout: 10
+    Runtime: python3.12
+    MemorySize: 128
+    Environment:
+      Variables:
+        TABLE_NAME: !Ref SignupsTable
+
+Conditions:
+  HasCustomDomain: !Not [!Equals [!Ref DomainName, '']]
+
+Resources:
+
+  # --- DynamoDB Table ---
+  SignupsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub fitforce-signups-${Stage}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: email
+          AttributeType: S
+      KeySchema:
+        - AttributeName: email
+          KeyType: HASH
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      Tags:
+        - Key: Project
+          Value: FitForce
+
+  # --- Lambda Function ---
+  SignupFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub fitforce-signup-${Stage}
+      Handler: signup.handler
+      CodeUri: lambda/
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SignupsTable
+      Events:
+        SignupApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref SignupApi
+            Path: /signup
+            Method: POST
+
+  # --- API Gateway ---
+  SignupApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub fitforce-api-${Stage}
+      StageName: !Ref Stage
+      Cors:
+        AllowMethods: "'POST,OPTIONS'"
+        AllowHeaders: "'Content-Type'"
+        AllowOrigin: "'*'"
+      EndpointConfiguration:
+        Type: REGIONAL
+
+  # --- S3 Bucket for Static Site ---
+  WebsiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub fitforce-web-${Stage}-${AWS::AccountId}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  # --- CloudFront OAC ---
+  CloudFrontOAC:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name: !Sub fitforce-oac-${Stage}
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+
+  # --- CloudFront Distribution ---
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        DefaultRootObject: index.html
+        Comment: !Sub FitForce Landing Page (${Stage})
+        Origins:
+          - Id: S3Origin
+            DomainName: !GetAtt WebsiteBucket.RegionalDomainName
+            OriginAccessControlId: !Ref CloudFrontOAC
+            S3OriginConfig:
+              OriginAccessIdentity: ''
+        DefaultCacheBehavior:
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6  # CachingOptimized
+          Compress: true
+        HttpVersion: http2
+        PriceClass: PriceClass_100
+
+  # --- S3 Bucket Policy (allow CloudFront) ---
+  WebsiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref WebsiteBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowCloudFrontServicePrincipal
+            Effect: Allow
+            Principal:
+              Service: cloudfront.amazonaws.com
+            Action: s3:GetObject
+            Resource: !Sub '${WebsiteBucket.Arn}/*'
+            Condition:
+              StringEquals:
+                'AWS:SourceArn': !Sub 'arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution}'
+
+Outputs:
+  ApiUrl:
+    Description: API Gateway endpoint for email signups
+    Value: !Sub 'https://${SignupApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/signup'
+
+  WebsiteBucketName:
+    Description: S3 bucket for static files
+    Value: !Ref WebsiteBucket
+
+  CloudFrontDomain:
+    Description: CloudFront distribution URL
+    Value: !GetAtt CloudFrontDistribution.DomainName
+
+  CloudFrontDistributionId:
+    Description: CloudFront distribution ID (for cache invalidation)
+    Value: !Ref CloudFrontDistribution
