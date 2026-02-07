@@ -23,7 +23,7 @@ done
 
 # --- Build & Deploy SAM stack ---
 echo "==> Building SAM application..."
-sam build --template-file template.yaml
+sam build --template-file template.yaml --use-container
 
 echo "==> Deploying SAM stack: $STACK_NAME"
 SAM_DEPLOY_ARGS=(
@@ -62,6 +62,7 @@ echo "==> Uploading static files to S3..."
 # Create a temp copy of script.js with the real API URL
 TMPDIR=$(mktemp -d)
 cp index.html style.css "$TMPDIR/"
+cp favicon.svg og-image.svg "$TMPDIR/" 2>/dev/null || true
 sed "s|var API_URL = '';|var API_URL = '${API_URL}';|" script.js > "$TMPDIR/script.js"
 
 aws s3 sync "$TMPDIR/" "s3://$BUCKET_NAME/" \
