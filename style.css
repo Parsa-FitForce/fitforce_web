@@ -411,6 +411,57 @@ input { font: inherit; }
   color: #E11D48;
 }
 
+/* --- Feature Card Highlight --- */
+.feature-card--highlight {
+  border-color: transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--gradient-brand) border-box;
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-md), 0 0 24px rgba(124,58,237,0.08);
+}
+
+.feature-card--highlight::before {
+  opacity: 1;
+}
+
+.feature-card--highlight:hover {
+  box-shadow: var(--shadow-lg), 0 0 32px rgba(124,58,237,0.14);
+}
+
+.feature-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(249,115,22,0.1));
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+}
+
+/* --- Feature Groups --- */
+.features__group {
+  margin-bottom: 48px;
+}
+
+.features__group:last-child {
+  margin-bottom: 0;
+}
+
+.features__group-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text-light);
+  margin-bottom: 20px;
+  padding-left: 4px;
+}
+
 .feature-card__title {
   font-size: 1.2rem;
   font-weight: 700;
@@ -779,12 +830,10 @@ input { font: inherit; }
   transform: translateY(0);
 }
 
-/* Stagger animation delay for feature cards */
-.feature-card:nth-child(2)[data-animate] { transition-delay: 0.08s; }
-.feature-card:nth-child(3)[data-animate] { transition-delay: 0.16s; }
-.feature-card:nth-child(4)[data-animate] { transition-delay: 0.24s; }
-.feature-card:nth-child(5)[data-animate] { transition-delay: 0.32s; }
-.feature-card:nth-child(6)[data-animate] { transition-delay: 0.4s; }
+/* Stagger animation delay for feature cards within each group */
+.features__grid .feature-card:nth-child(2)[data-animate] { transition-delay: 0.08s; }
+.features__grid .feature-card:nth-child(3)[data-animate] { transition-delay: 0.16s; }
+.features__grid .feature-card:nth-child(4)[data-animate] { transition-delay: 0.24s; }
 
 .step:nth-child(3)[data-animate] { transition-delay: 0.1s; }
 .step:nth-child(5)[data-animate] { transition-delay: 0.2s; }
@@ -806,6 +855,10 @@ input { font: inherit; }
   .hero__title { font-size: 3.2rem; }
 
   .features__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .features__grid--training {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -838,8 +891,12 @@ input { font: inherit; }
   .faq { padding: 100px 0; }
   .final-cta { padding: 100px 0; }
 
-  .features__grid {
-    grid-template-columns: repeat(3, 1fr);
+  .features__grid--training {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features__grid--business {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .section-header__title { font-size: 2.5rem; }
