@@ -183,6 +183,17 @@
   setupForm('hero-form', 'hero-email', 'hero-message');
   setupForm('footer-form', 'footer-email', 'footer-message');
 
+  // --- FAQ accordion ---
+  document.querySelectorAll('.faq__question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      var answer = this.nextElementSibling;
+
+      this.setAttribute('aria-expanded', String(!expanded));
+      answer.hidden = expanded;
+    });
+  });
+
   // --- Smooth scroll for anchor links ---
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {

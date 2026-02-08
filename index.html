@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,10 +35,12 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#E11D48">
 
-  <!-- Fonts -->
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="style.css" as="style">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="style.css">
 
   <!-- Structured Data -->
@@ -69,6 +71,64 @@
     }
   }
   </script>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What software do personal trainers need to run their business?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most independent trainers end up using separate tools for scheduling, payments, waivers, and accounting — often five or six different apps. FitForce combines client management, online booking, payment processing, digital waivers, expense tracking, and certification management into a single platform built specifically for fitness professionals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need liability insurance as a personal trainer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — professional liability insurance is essential for personal trainers. It protects you if a client is injured during a session or claims your advice caused harm. Most gyms and studios require it, and it's critical for independent trainers working on their own. FitForce includes liability coverage options and digital waivers so you're protected from day one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can self-employed personal trainers get affordable health insurance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "One of the biggest challenges for self-employed trainers is finding affordable health insurance without an employer plan. FitForce gives you access to group health plans through our network, so you can get better rates than shopping the individual market alone. It's one of the most requested features from our early members."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How should personal trainers track income and expenses for taxes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As a self-employed trainer, you need to track all business income, deductible expenses (equipment, continuing education, mileage, gym fees), and estimated quarterly tax payments. FitForce lets you log income and expenses as you go and export clean reports at tax time — no more digging through bank statements or scrambling in April."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What certifications do personal trainers need to maintain?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Personal trainers typically need to maintain a primary certification (NASM, ACE, ACSM, NSCA, or ISSA), CPR/AED certification, and any specialty certifications for their niche. Most require continuing education credits for renewal every one to two years. FitForce stores all your credentials in one place and sends alerts before they expire so you never lapse."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is FitForce free? How much does it cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FitForce is currently in early access. Sign up now to reserve your spot and lock in discounted founder pricing when we launch. Early members will get a significantly lower rate than our standard pricing — and that rate stays with you as long as you're a member."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -86,6 +146,8 @@
       <a href="#signup" class="btn btn--sm btn--nav">Get Early Access</a>
     </div>
   </nav>
+
+  <main>
 
   <!-- Hero -->
   <header class="hero" id="signup">
@@ -247,6 +309,79 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Frequently Asked Questions</h2>
+        <p class="section-header__subtitle">Common questions from personal trainers about running their business and how FitForce helps.</p>
+      </div>
+      <div class="faq__list">
+
+        <div class="faq__item" data-animate>
+          <button class="faq__question" aria-expanded="false">
+            <span>What software do personal trainers need to run their business?</span>
+            <svg class="faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__answer" hidden>
+            <p>Most independent trainers end up using separate tools for scheduling, payments, waivers, and accounting — often five or six different apps. FitForce combines client management, online booking, payment processing, digital waivers, expense tracking, and certification management into a single platform built specifically for fitness professionals.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" data-animate>
+          <button class="faq__question" aria-expanded="false">
+            <span>Do I need liability insurance as a personal trainer?</span>
+            <svg class="faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__answer" hidden>
+            <p>Yes — professional liability insurance is essential for personal trainers. It protects you if a client is injured during a session or claims your advice caused harm. Most gyms and studios require it, and it's critical for independent trainers working on their own. FitForce includes liability coverage options and digital waivers so you're protected from day one.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" data-animate>
+          <button class="faq__question" aria-expanded="false">
+            <span>Can self-employed personal trainers get affordable health insurance?</span>
+            <svg class="faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__answer" hidden>
+            <p>One of the biggest challenges for self-employed trainers is finding affordable health insurance without an employer plan. FitForce gives you access to group health plans through our network, so you can get better rates than shopping the individual market alone. It's one of the most requested features from our early members.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" data-animate>
+          <button class="faq__question" aria-expanded="false">
+            <span>How should personal trainers track income and expenses for taxes?</span>
+            <svg class="faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__answer" hidden>
+            <p>As a self-employed trainer, you need to track all business income, deductible expenses (equipment, continuing education, mileage, gym fees), and estimated quarterly tax payments. FitForce lets you log income and expenses as you go and export clean reports at tax time — no more digging through bank statements or scrambling in April.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" data-animate>
+          <button class="faq__question" aria-expanded="false">
+            <span>What certifications do personal trainers need to maintain?</span>
+            <svg class="faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__answer" hidden>
+            <p>Personal trainers typically need to maintain a primary certification (NASM, ACE, ACSM, NSCA, or ISSA), CPR/AED certification, and any specialty certifications for their niche. Most require continuing education credits for renewal every one to two years. FitForce stores all your credentials in one place and sends alerts before they expire so you never lapse.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" data-animate>
+          <button class="faq__question" aria-expanded="false">
+            <span>Is FitForce free? How much does it cost?</span>
+            <svg class="faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__answer" hidden>
+            <p>FitForce is currently in early access. Sign up now to reserve your spot and lock in discounted founder pricing when we launch. Early members will get a significantly lower rate than our standard pricing — and that rate stays with you as long as you're a member.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Final CTA -->
   <section class="final-cta" id="final-cta">
     <div class="container final-cta__inner">
@@ -275,6 +410,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer__inner">
@@ -293,6 +430,7 @@
         <a href="mailto:hello@fitforce.com">Contact</a>
         <a href="#features">Features</a>
         <a href="#how">How It Works</a>
+        <a href="#faq">FAQ</a>
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 FitForce. All rights reserved.</p>

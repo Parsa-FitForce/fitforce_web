@@ -62,7 +62,9 @@ echo "==> Uploading static files to S3..."
 # Create a temp copy of script.js with the real API URL
 TMPDIR=$(mktemp -d)
 cp index.html style.css "$TMPDIR/"
-cp favicon.svg og-image.svg "$TMPDIR/" 2>/dev/null || true
+cp favicon.svg og-image.svg og-image.png "$TMPDIR/" 2>/dev/null || true
+cp favicon-32x32.png favicon-16x16.png apple-touch-icon.png "$TMPDIR/" 2>/dev/null || true
+cp robots.txt sitemap.xml "$TMPDIR/" 2>/dev/null || true
 sed "s|var API_URL = '';|var API_URL = '${API_URL}';|" script.js > "$TMPDIR/script.js"
 
 aws s3 sync "$TMPDIR/" "s3://$BUCKET_NAME/" \

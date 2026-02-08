@@ -572,6 +572,78 @@ input { font: inherit; }
   line-height: 1.55;
 }
 
+/* --- FAQ --- */
+.faq {
+  padding: 80px 0;
+  background: var(--color-bg);
+}
+
+.faq__list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq__item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  overflow: hidden;
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.faq__item:hover {
+  border-color: rgba(124,58,237,0.2);
+  box-shadow: var(--shadow-sm);
+}
+
+.faq__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--color-text);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.faq__chevron {
+  flex-shrink: 0;
+  color: var(--color-text-light);
+  transition: transform var(--transition);
+}
+
+.faq__question[aria-expanded="true"] .faq__chevron {
+  transform: rotate(180deg);
+}
+
+.faq__answer {
+  padding: 0 24px 20px;
+}
+
+.faq__answer p {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.75;
+}
+
+/* Stagger FAQ animations */
+.faq__item:nth-child(2)[data-animate] { transition-delay: 0.06s; }
+.faq__item:nth-child(3)[data-animate] { transition-delay: 0.12s; }
+.faq__item:nth-child(4)[data-animate] { transition-delay: 0.18s; }
+.faq__item:nth-child(5)[data-animate] { transition-delay: 0.24s; }
+.faq__item:nth-child(6)[data-animate] { transition-delay: 0.3s; }
+
 /* --- Final CTA --- */
 .final-cta {
   padding: 80px 0;
@@ -763,6 +835,7 @@ input { font: inherit; }
   .features { padding: 100px 0; }
   .how-it-works { padding: 100px 0; }
   .stats { padding: 100px 0; }
+  .faq { padding: 100px 0; }
   .final-cta { padding: 100px 0; }
 
   .features__grid {
