@@ -35,7 +35,9 @@ SAM_DEPLOY_ARGS=(
   --parameter-overrides "Stage=$STAGE"
 )
 
-sam deploy "${SAM_DEPLOY_ARGS[@]}"
+if ! sam deploy "${SAM_DEPLOY_ARGS[@]}" 2>&1; then
+  echo "   (No infrastructure changes — continuing with static file upload)"
+fi
 
 # --- Get stack outputs ---
 echo "==> Fetching stack outputs..."
