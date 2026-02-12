@@ -35,6 +35,18 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#E11D48">
 
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G14GHXQ5FF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G14GHXQ5FF');
+  </script>
+
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="ZBmbydceaQ8fhVf4Sb-ZhbGmpaiYMzr4kpq6jJ2yhKY">
+
   <!-- Preload Critical Resources -->
   <link rel="preload" href="style.css" as="style">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -143,7 +155,10 @@
         </svg>
         <span>FitForce</span>
       </a>
-      <a href="#signup" class="btn btn--sm btn--nav">Get Early Access</a>
+      <div class="nav__links">
+        <a href="/blog/" class="nav__link">Blog</a>
+        <a href="#signup" class="btn btn--sm btn--nav"><span class="btn__short">Sign Up</span><span class="btn__full">Get Early Access</span></a>
+      </div>
     </div>
   </nav>
 
@@ -442,6 +457,7 @@
         <a href="#features">Features</a>
         <a href="#how">How It Works</a>
         <a href="#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 FitForce. All rights reserved.</p>

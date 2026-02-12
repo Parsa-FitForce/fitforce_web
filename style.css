@@ -172,6 +172,40 @@ input { font: inherit; }
 
 .nav__logo-icon { flex-shrink: 0; }
 
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav__link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  transition: color var(--transition);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+}
+
+.nav__link:hover {
+  color: var(--color-text);
+  background: var(--color-bg-alt);
+}
+
+/* Mobile nav: compact button */
+.btn--nav {
+  padding: 8px 16px;
+  font-size: 0.8rem;
+}
+
+.btn--nav .btn__full {
+  display: none;
+}
+
+.btn--nav .btn__short {
+  display: inline;
+}
+
 /* --- Hero --- */
 .hero {
   padding: 120px 0 80px;
@@ -850,6 +884,18 @@ input { font: inherit; }
 @media (min-width: 640px) {
   .container { padding: 0 32px; }
   .hide-mobile { display: inline; }
+
+  .nav__links { gap: 20px; }
+  .nav__link {
+    font-size: 0.9rem;
+    padding: 6px 14px;
+  }
+  .btn--nav {
+    padding: 10px 22px;
+    font-size: 0.875rem;
+  }
+  .btn--nav .btn__full { display: inline; }
+  .btn--nav .btn__short { display: none; }
 
   .hero { padding: 140px 0 100px; }
   .hero__title { font-size: 3.2rem; }

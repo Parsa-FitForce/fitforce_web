@@ -69,6 +69,12 @@ cp favicon-32x32.png favicon-16x16.png apple-touch-icon.png "$TMPDIR/" 2>/dev/nu
 cp robots.txt sitemap.xml "$TMPDIR/" 2>/dev/null || true
 sed "s|var API_URL = '';|var API_URL = '${API_URL}';|" script.js > "$TMPDIR/script.js"
 
+# Copy blog directory
+if [ -d "blog" ]; then
+  mkdir -p "$TMPDIR/blog"
+  cp blog/*.html blog/*.css "$TMPDIR/blog/" 2>/dev/null || true
+fi
+
 aws s3 sync "$TMPDIR/" "s3://$BUCKET_NAME/" \
   --region "$REGION" \
   --delete \

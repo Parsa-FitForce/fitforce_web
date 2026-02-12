@@ -5,8 +5,12 @@ Description: FitForce Landing Page — Email collection backend + static hosting
 Parameters:
   DomainName:
     Type: String
-    Default: ''
+    Default: fitforce.com
     Description: Custom domain name (leave empty to use CloudFront default)
+  CertificateArn:
+    Type: String
+    Default: arn:aws:acm:us-east-1:851619281751:certificate/ff288e1c-7748-4eda-9237-649a0cc03c6c
+    Description: ACM certificate ARN for the custom domain
   Stage:
     Type: String
     Default: prod
@@ -96,6 +100,27 @@ Resources:
         SigningBehavior: always
         SigningProtocol: sigv4
 
+  # --- CloudFront Function (URL rewriting for subdirectory index.html) ---
+  UrlRewriteFunction:
+    Type: AWS::CloudFront::Function
+    Properties:
+      Name: !Sub fitforce-url-rewrite-${Stage}
+      AutoPublish: true
+      FunctionConfig:
+        Comment: Rewrite directory URLs to index.html
+        Runtime: cloudfront-js-2.0
+      FunctionCode: |
+        function handler(event) {
+          var request = event.request;
+          var uri = request.uri;
+          if (uri.endsWith('/')) {
+            request.uri += 'index.html';
+          } else if (!uri.includes('.')) {
+            request.uri += '.html';
+          }
+          return request;
+        }
+
   # --- CloudFront Distribution ---
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
@@ -115,6 +140,20 @@ Resources:
           ViewerProtocolPolicy: redirect-to-https
           CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6  # CachingOptimized
           Compress: true
+          FunctionAssociations:
+            - EventType: viewer-request
+              FunctionARN: !GetAtt UrlRewriteFunction.FunctionARN
+        Aliases: !If
+          - HasCustomDomain
+          - - !Ref DomainName
+            - !Sub 'www.${DomainName}'
+          - !Ref 'AWS::NoValue'
+        ViewerCertificate: !If
+          - HasCustomDomain
+          - ACMCertificateArn: !Ref CertificateArn
+            SSLSupportMethod: sni-only
+            MinimumProtocolVersion: TLSv1.2_2021
+          - CloudFrontDefaultCertificate: true
         HttpVersion: http2
         PriceClass: PriceClass_100
 

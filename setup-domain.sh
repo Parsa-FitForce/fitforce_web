@@ -168,25 +168,108 @@ fi
 
 rm -rf "$TMPDIR"
 
-# --- Step 5: Show final DNS records ---
+# --- Step 5: Route 53 DNS Records ---
 echo ""
-echo "==> Step 5: Final DNS Configuration"
-echo ""
-echo "   Add these records to your DNS provider:"
-echo "   ========================================"
-echo ""
-echo "   Root domain ($DOMAIN):"
-echo "   Type:  ALIAS or ANAME (if supported) or CNAME flattening"
-echo "   Name:  @ (or $DOMAIN)"
-echo "   Value: $CF_DOMAIN"
-echo ""
-echo "   WWW subdomain:"
-echo "   Type:  CNAME"
-echo "   Name:  www"
-echo "   Value: $CF_DOMAIN"
-echo ""
-echo "   Note: If your DNS provider doesn't support ALIAS records for"
-echo "   root domains, consider using AWS Route 53 or Cloudflare."
+echo "==> Step 5: Route 53 DNS Configuration"
+
+# Find the hosted zone for the domain
+HOSTED_ZONE_ID=$(aws route53 list-hosted-zones-by-name \
+  --dns-name "$DOMAIN" \
+  --query "HostedZones[?Name=='${DOMAIN}.'].Id" \
+  --output text | sed 's|/hostedzone/||')
+
+if [[ -z "$HOSTED_ZONE_ID" || "$HOSTED_ZONE_ID" == "None" ]]; then
+  echo "   Error: No Route 53 hosted zone found for $DOMAIN"
+  echo "   Create one first: aws route53 create-hosted-zone --name $DOMAIN --caller-reference $(date +%s)"
+  exit 1
+fi
+
+echo "   Hosted Zone ID: $HOSTED_ZONE_ID"
+
+# Google Search Console verification TXT record
+GOOGLE_VERIFICATION="google-site-verification=ZBmbydceaQ8fhVf4Sb-ZhbGmpaiYMzr4kpq6jJ2yhKY"
+
+echo "   Adding Google Search Console verification TXT record..."
+aws route53 change-resource-record-sets \
+  --hosted-zone-id "$HOSTED_ZONE_ID" \
+  --change-batch '{
+    "Changes": [{
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "'"$DOMAIN"'",
+        "Type": "TXT",
+        "TTL": 300,
+        "ResourceRecords": [{"Value": "\"'"$GOOGLE_VERIFICATION"'\""}]
+      }
+    }]
+  }' --output text > /dev/null
+echo "   Google verification TXT record added."
+
+# Root domain A record (alias to CloudFront)
+echo "   Adding root domain A record (alias to CloudFront)..."
+aws route53 change-resource-record-sets \
+  --hosted-zone-id "$HOSTED_ZONE_ID" \
+  --change-batch '{
+    "Changes": [{
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "'"$DOMAIN"'",
+        "Type": "A",
+        "AliasTarget": {
+          "HostedZoneId": "Z2FDTNDATAQYW2",
+          "DNSName": "'"$CF_DOMAIN"'",
+          "EvaluateTargetHealth": false
+        }
+      }
+    }]
+  }' --output text > /dev/null
+echo "   Root domain A record added."
+
+# WWW CNAME record (alias to CloudFront)
+echo "   Adding www subdomain A record (alias to CloudFront)..."
+aws route53 change-resource-record-sets \
+  --hosted-zone-id "$HOSTED_ZONE_ID" \
+  --change-batch '{
+    "Changes": [{
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "www.'"$DOMAIN"'",
+        "Type": "A",
+        "AliasTarget": {
+          "HostedZoneId": "Z2FDTNDATAQYW2",
+          "DNSName": "'"$CF_DOMAIN"'",
+          "EvaluateTargetHealth": false
+        }
+      }
+    }]
+  }' --output text > /dev/null
+echo "   WWW A record added."
+
+# Also add ACM validation CNAME records to Route 53
+echo "   Adding ACM validation CNAME records..."
+VALIDATION_JSON=$(aws acm describe-certificate \
+  --certificate-arn "$CERT_ARN" \
+  --region us-east-1 \
+  --query 'Certificate.DomainValidationOptions[*].ResourceRecord' \
+  --output json)
+
+CHANGES="["
+FIRST=true
+for row in $(echo "$VALIDATION_JSON" | jq -c '.[]'); do
+  CNAME_NAME=$(echo "$row" | jq -r '.Name')
+  CNAME_VALUE=$(echo "$row" | jq -r '.Value')
+  if [[ "$FIRST" != true ]]; then CHANGES+=","; fi
+  CHANGES+='{"Action":"UPSERT","ResourceRecordSet":{"Name":"'"$CNAME_NAME"'","Type":"CNAME","TTL":300,"ResourceRecords":[{"Value":"'"$CNAME_VALUE"'"}]}}'
+  FIRST=false
+done
+CHANGES+="]"
+
+aws route53 change-resource-record-sets \
+  --hosted-zone-id "$HOSTED_ZONE_ID" \
+  --change-batch '{"Changes":'"$CHANGES"'}' \
+  --output text > /dev/null
+echo "   ACM validation CNAME records added."
+
 echo ""
 
 # --- Done ---
@@ -196,4 +279,11 @@ echo ""
 echo "  Certificate: $CERT_ARN"
 echo "  CloudFront:  $CF_DOMAIN"
 echo "  Domain:      https://$DOMAIN"
+echo "  DNS:         Route 53 (zone $HOSTED_ZONE_ID)"
+echo ""
+echo "  Records created:"
+echo "    - A record: $DOMAIN -> $CF_DOMAIN"
+echo "    - A record: www.$DOMAIN -> $CF_DOMAIN"
+echo "    - TXT record: Google Search Console verification"
+echo "    - CNAME records: ACM certificate validation"
 echo "============================================"
