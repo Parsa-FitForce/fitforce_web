@@ -172,19 +172,76 @@ input { font: inherit; }
 
 .nav__logo-icon { flex-shrink: 0; }
 
-.nav__links {
+/* --- Hamburger button (mobile only) --- */
+.nav__hamburger {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  z-index: 110;
+}
+
+.nav__hamburger:hover {
+  background: var(--color-bg-alt);
+}
+
+.nav__hamburger-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 1px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* Animate to X when open */
+.nav__hamburger.is-active .nav__hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav__hamburger.is-active .nav__hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.nav__hamburger.is-active .nav__hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --- Nav menu (mobile: dropdown, desktop: inline) --- */
+.nav__menu {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(250,250,250,0.97);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 12px 20px 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.nav__menu.is-open {
+  display: flex;
+}
+
+.nav__menu .btn--nav {
+  margin-top: 8px;
+  text-align: center;
 }
 
 .nav__link {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-text-light);
-  transition: color var(--transition);
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
+  transition: color var(--transition), background var(--transition);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
 }
 
 .nav__link:hover {
@@ -885,7 +942,21 @@ input { font: inherit; }
   .container { padding: 0 32px; }
   .hide-mobile { display: inline; }
 
-  .nav__links { gap: 20px; }
+  .nav__hamburger { display: none; }
+  .nav__menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    position: static;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
+    padding: 0;
+    box-shadow: none;
+  }
+  .nav__menu .btn--nav { margin-top: 0; }
   .nav__link {
     font-size: 0.9rem;
     padding: 6px 14px;

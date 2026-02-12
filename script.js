@@ -24,6 +24,34 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  // --- Mobile nav toggle ---
+  var navToggle = document.getElementById('nav-toggle');
+  var navMenu = document.getElementById('nav-menu');
+
+  function closeMenu() {
+    navMenu.classList.remove('is-open');
+    navToggle.classList.remove('is-active');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  navToggle.addEventListener('click', function () {
+    var isOpen = navMenu.classList.toggle('is-open');
+    navToggle.classList.toggle('is-active', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close menu when a nav link is clicked
+  navMenu.querySelectorAll('.nav__link, .btn--nav').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function (e) {
+    if (!nav.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
   // --- Scroll animations (IntersectionObserver) ---
   var animatedElements = document.querySelectorAll('[data-animate]');
 
