@@ -143,17 +143,13 @@ Resources:
           FunctionAssociations:
             - EventType: viewer-request
               FunctionARN: !GetAtt UrlRewriteFunction.FunctionARN
-        Aliases: !If
-          - HasCustomDomain
-          - - !Ref DomainName
-            - !Sub 'www.${DomainName}'
-          - !Ref 'AWS::NoValue'
-        ViewerCertificate: !If
-          - HasCustomDomain
-          - ACMCertificateArn: !Ref CertificateArn
-            SSLSupportMethod: sni-only
-            MinimumProtocolVersion: TLSv1.2_2021
-          - CloudFrontDefaultCertificate: true
+        Aliases:
+          - !Ref DomainName
+          - !Sub 'www.${DomainName}'
+        ViewerCertificate:
+          AcmCertificateArn: !Ref CertificateArn
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.2_2021
         HttpVersion: http2
         PriceClass: PriceClass_100
 

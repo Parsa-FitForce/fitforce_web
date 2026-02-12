@@ -32,12 +32,18 @@ SAM_DEPLOY_ARGS=(
   --capabilities CAPABILITY_IAM
   --resolve-s3
   --no-confirm-changeset
-  --parameter-overrides "Stage=$STAGE"
+  --parameter-overrides "Stage=$STAGE" "DomainName=fitforce.com" "CertificateArn=arn:aws:acm:us-east-1:851619281751:certificate/ff288e1c-7748-4eda-9237-649a0cc03c6c"
 )
 
-if ! sam deploy "${SAM_DEPLOY_ARGS[@]}" 2>&1; then
-  echo "   (No infrastructure changes — continuing with static file upload)"
-fi
+DEPLOY_OUTPUT=$(sam deploy "${SAM_DEPLOY_ARGS[@]}" 2>&1) || {
+  if echo "$DEPLOY_OUTPUT" | grep -q "No changes to deploy"; then
+    echo "   (No infrastructure changes — continuing with static file upload)"
+  else
+    echo "ERROR: SAM deploy failed!"
+    echo "$DEPLOY_OUTPUT"
+    exit 1
+  fi
+}
 
 # --- Get stack outputs ---
 echo "==> Fetching stack outputs..."
