@@ -88,23 +88,9 @@
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav class="nav" id="nav">
-    <div class="container nav__inner">
-      <a href="/" class="nav__logo">
-        <svg class="nav__logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <defs><linearGradient id="logo-g" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#F97316"/><stop offset=".5" stop-color="#E11D48"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
-          <rect width="32" height="32" rx="9" fill="url(#logo-g)"/>
-          <path d="M19 5L10 17.5h5.5L13 27l9.5-13H17L19 5z" fill="#fff" fill-opacity=".95"/>
-        </svg>
-        <span>FitForce</span>
-      </a>
-      <div class="nav__links">
-        <a href="/blog/" class="nav__link">Blog</a>
-        <a href="/#signup" class="btn btn--sm btn--nav">Get Early Access</a>
-      </div>
-    </div>
-  </nav>
+  <!-- Nav (rendered by nav.js) -->
+  <nav id="nav"></nav>
+  <script src="/nav.js"></script>
 
   <main>
 
@@ -391,13 +377,5 @@
     </div>
   </footer>
 
-  <script>
-    // Nav scroll effect
-    var nav = document.getElementById('nav');
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 10) { nav.classList.add('is-scrolled'); }
-      else { nav.classList.remove('is-scrolled'); }
-    }, { passive: true });
-  </script>
 </body>
 </html>

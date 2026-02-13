@@ -69,7 +69,7 @@ echo "==> Uploading static files to S3..."
 
 # Create a temp copy of script.js with the real API URL
 TMPDIR=$(mktemp -d)
-cp index.html style.css "$TMPDIR/"
+cp index.html style.css nav.js "$TMPDIR/"
 cp favicon.svg og-image.svg og-image.png "$TMPDIR/" 2>/dev/null || true
 cp favicon-32x32.png favicon-16x16.png apple-touch-icon.png "$TMPDIR/" 2>/dev/null || true
 cp robots.txt sitemap.xml "$TMPDIR/" 2>/dev/null || true
@@ -93,6 +93,11 @@ aws s3 cp "$TMPDIR/style.css" "s3://$BUCKET_NAME/style.css" \
   --content-type "text/css"
 
 aws s3 cp "$TMPDIR/script.js" "s3://$BUCKET_NAME/script.js" \
+  --region "$REGION" \
+  --cache-control "public, max-age=86400" \
+  --content-type "application/javascript"
+
+aws s3 cp "$TMPDIR/nav.js" "s3://$BUCKET_NAME/nav.js" \
   --region "$REGION" \
   --cache-control "public, max-age=86400" \
   --content-type "application/javascript"
