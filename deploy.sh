@@ -69,7 +69,7 @@ echo "==> Uploading static files to S3..."
 
 # Create a temp copy of script.js with the real API URL
 TMPDIR=$(mktemp -d)
-cp index.html style.css nav.js "$TMPDIR/"
+cp index.html style.css nav.js terms.html privacy.html "$TMPDIR/"
 cp favicon.svg og-image.svg og-image.png "$TMPDIR/" 2>/dev/null || true
 cp favicon-32x32.png favicon-16x16.png apple-touch-icon.png "$TMPDIR/" 2>/dev/null || true
 cp robots.txt sitemap.xml "$TMPDIR/" 2>/dev/null || true
