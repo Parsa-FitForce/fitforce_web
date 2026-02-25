@@ -8,8 +8,8 @@
   'use strict';
 
   // --- Configuration ---
-  // Update this after deploying the SAM stack
-  var API_URL = '';
+  var SUPPORT_URL = 'https://support.persianpages.com';
+  var APP_ID = 'fitforce';
 
   // --- Scroll animations (IntersectionObserver) ---
   var animatedElements = document.querySelectorAll('[data-animate]');
@@ -118,23 +118,11 @@
       btn.classList.add('is-loading');
       btn.disabled = true;
 
-      // If no API URL configured, simulate success (local testing)
-      if (!API_URL) {
-        setTimeout(function () {
-          btn.classList.remove('is-loading');
-          btn.disabled = false;
-          messageEl.textContent = "You're on the list! We'll be in touch soon.";
-          messageEl.classList.add('form__message--success');
-          emailInput.value = '';
-        }, 800);
-        return;
-      }
-
-      // Submit to API
-      fetch(API_URL, {
+      // Submit to support service
+      fetch(SUPPORT_URL + '/api/notifications/early-access', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email })
+        body: JSON.stringify({ appId: APP_ID, email: email })
       })
         .then(function (res) {
           return res.json().then(function (data) {
@@ -147,10 +135,6 @@
 
           if (result.status >= 200 && result.status < 300) {
             messageEl.textContent = result.data.message || "You're on the list! We'll be in touch soon.";
-            messageEl.classList.add('form__message--success');
-            emailInput.value = '';
-          } else if (result.status === 409) {
-            messageEl.textContent = result.data.message || "You're already on the waitlist!";
             messageEl.classList.add('form__message--success');
             emailInput.value = '';
           } else {
