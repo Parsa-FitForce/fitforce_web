@@ -22,7 +22,9 @@
   <!-- Logo -->
   <g transform="translate(100, 200)">
     <rect width="80" height="80" rx="18" fill="url(#logo-grad)"/>
-    <path d="M47.5 12.5L25 43.75h13.75L32.5 67.5l23.75-32.5H42.5L47.5 12.5z" fill="#fff" fill-opacity=".95"/>
+    <rect x="17.5" y="26.25" width="12.5" height="27.5" rx="5" fill="#fff" fill-opacity=".95"/>
+    <rect x="50" y="26.25" width="12.5" height="27.5" rx="5" fill="#fff" fill-opacity=".95"/>
+    <rect x="26.25" y="35" width="27.5" height="10" rx="5" fill="#fff" fill-opacity=".88"/>
   </g>
 
   <!-- Title -->
