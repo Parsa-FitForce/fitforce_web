@@ -37,6 +37,7 @@
         '<a href="' + prefix + '#how" class="nav__link">How It Works</a>' +
         '<a href="' + prefix + '#faq" class="nav__link">FAQ</a>' +
         '<a href="/blog/" class="nav__link">Blog</a>' +
+        '<a href="https://app.fitforce.com" class="nav__link">Login</a>' +
         '<a href="' + prefix + '#signup" class="btn btn--sm btn--nav">' +
           '<span class="btn__short">Sign Up</span>' +
           '<span class="btn__full">Get Early Access</span>' +
