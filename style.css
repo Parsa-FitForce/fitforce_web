@@ -126,6 +126,18 @@ input { font: inherit; }
   transform: translateY(-1px);
 }
 
+.btn--nav-outline {
+  border: 1.5px solid rgba(124,58,237,0.4);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+  background: transparent;
+}
+.btn--nav-outline:hover {
+  background: rgba(124,58,237,0.08);
+  border-color: rgba(124,58,237,0.6);
+  transform: translateY(-1px);
+}
+
 .btn--form {
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   flex-shrink: 0;
@@ -252,6 +264,16 @@ input { font: inherit; }
   font-size: 0.95rem;
   border-radius: var(--radius-sm);
   justify-content: center;
+}
+
+.nav__menu .btn--nav-outline {
+  display: flex;
+  margin-top: 4px;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  justify-content: center;
+  font-weight: 600;
 }
 
 /* In mobile menu, always show full CTA text */
@@ -1043,6 +1065,12 @@ input { font: inherit; }
   }
   .nav__menu .btn--nav .btn__full { display: inline; }
   .nav__menu .btn--nav .btn__short { display: none; }
+  .nav__menu .btn--nav-outline {
+    margin-top: 0;
+    padding: 10px 22px;
+    font-size: 0.875rem;
+    border-radius: var(--radius-full);
+  }
 
   .hero { padding: 140px 0 100px; }
   .hero__title { font-size: 3.2rem; }
