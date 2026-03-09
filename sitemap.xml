@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://www.fitforce.com/blog/</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-03-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -39,6 +39,18 @@
   <url>
     <loc>https://www.fitforce.com/blog/best-personal-trainer-management-tools</loc>
     <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.fitforce.com/blog/how-to-get-more-personal-training-clients</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.fitforce.com/blog/personal-trainer-llc-vs-sole-proprietorship</loc>
+    <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
