@@ -1235,8 +1235,7 @@ body {
 
 .hero__connect {
   position: relative;
-  min-height: 470px;
-  padding: 28px;
+  padding: 24px;
   border-radius: 8px;
   background:
     linear-gradient(#fff, #fff) padding-box,
@@ -1246,148 +1245,182 @@ body {
   overflow: hidden;
 }
 
-.hero__connect::before,
-.hero__connect::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  width: min(280px, calc(100% - 80px));
-  height: 2px;
-  background: linear-gradient(to right, rgba(249,115,22,0.4), rgba(124,58,237,0.4));
-  transform: translateX(-50%);
-}
-
-.hero__connect::before {
-  top: 126px;
-}
-
-.hero__connect::after {
-  top: 258px;
-  width: 2px;
-  height: 86px;
-}
-
-.assistant-choice-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 14px;
-}
-
-.assistant-card,
-.fitforce-hub,
-.connection-label,
-.task-strip {
+.preview-shell,
+.preview-note {
   position: relative;
   z-index: 1;
 }
 
-.assistant-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px;
+.preview-shell {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   background: #fff;
-  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(28,25,23,0.08);
 }
 
-.assistant-card__logo {
-  width: 46px;
-  height: 46px;
+.preview-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(124,58,237,0.08));
+}
+
+.preview-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.preview-brand strong,
+.preview-brand span,
+.preview-card span,
+.preview-card strong,
+.preview-card p,
+.preview-note strong,
+.preview-note span {
+  display: block;
+}
+
+.preview-brand strong {
+  font-size: 1rem;
+  line-height: 1.1;
+}
+
+.preview-brand span,
+.preview-card span,
+.preview-note span {
+  color: var(--color-text-light);
+  font-size: 0.82rem;
+}
+
+.preview-status {
   flex: 0 0 auto;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: var(--color-primary-dark);
+  background: rgba(124,58,237,0.1);
+  font-size: 0.76rem;
+  font-weight: 800;
 }
 
-.assistant-card__logo img {
+.preview-grid {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.preview-card {
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+}
+
+.preview-card--wide {
+  grid-column: 1 / -1;
+}
+
+.preview-card strong {
+  margin-top: 4px;
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.preview-card p {
+  margin-top: 5px;
+  color: var(--color-text-light);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.assistant-rail {
+  display: grid;
+  gap: 8px;
+  padding: 0 16px 16px;
+}
+
+.assistant-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--color-text);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.assistant-pill--fitforce {
+  background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(225,29,72,0.06), rgba(124,58,237,0.08));
+}
+
+.assistant-pill__logo,
+.access-option__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.assistant-pill__logo img,
+.access-option__logo img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: contain;
 }
 
-.assistant-card__logo--claude,
-.app-connect-card:first-child .assistant-card__logo {
-  padding: 8px;
-  border-radius: 8px;
+.assistant-pill__logo--claude,
+.access-option__logo--claude {
+  padding: 5px;
   background: #D97757;
 }
 
-.assistant-card__logo--chatgpt,
-.app-connect-card:nth-child(2) .assistant-card__logo {
-  overflow: hidden;
-  border-radius: 8px;
+.assistant-pill__logo--chatgpt,
+.access-option__logo--chatgpt {
   background: #050606;
 }
 
-.assistant-card span {
-  display: block;
-  font-weight: 800;
-  color: var(--color-text);
+.preview-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid rgba(124,58,237,0.16);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.72);
 }
 
-.assistant-card p {
+.preview-note strong {
+  color: var(--color-text);
+  line-height: 1.25;
+}
+
+.preview-note span {
   margin-top: 2px;
-  max-width: 230px;
-  color: var(--color-text-light);
-  font-size: 0.9rem;
   line-height: 1.45;
 }
 
-.connection-label {
-  width: max-content;
-  margin: 20px auto 0;
-  padding: 8px 12px;
-  border: 1px solid rgba(124,58,237,0.16);
-  border-radius: 999px;
-  background: rgba(255,255,255,0.86);
-  color: var(--color-text-light);
-  font-size: 0.82rem;
-  font-weight: 700;
-}
+@media (min-width: 390px) {
+  .preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-.fitforce-hub {
-  width: min(260px, 100%);
-  margin: 26px auto 0;
-  padding: 24px;
-  text-align: center;
-  border-radius: 8px;
-  background: linear-gradient(135deg, rgba(249,115,22,0.1), rgba(225,29,72,0.08), rgba(124,58,237,0.1));
-  border: 1px solid rgba(124,58,237,0.16);
-}
-
-.fitforce-hub svg {
-  margin: 0 auto 10px;
-}
-
-.fitforce-hub strong,
-.fitforce-hub span {
-  display: block;
-}
-
-.fitforce-hub strong {
-  font-size: 1.25rem;
-}
-
-.fitforce-hub span {
-  margin-top: 6px;
-  color: var(--color-text-light);
-  font-size: 0.86rem;
-  line-height: 1.5;
-}
-
-.task-strip {
-  display: grid;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-.task-strip span {
-  padding: 10px 12px;
-  border-radius: 8px;
-  color: var(--color-text-light);
-  background: var(--color-bg-alt);
-  font-size: 0.88rem;
+  .assistant-rail {
+    grid-template-columns: 1.1fr 0.9fr 0.9fr;
+  }
 }
 
 .section-kicker {
@@ -1398,58 +1431,95 @@ body {
 
 .mcp-layer {
   background: #fff;
+  padding: 88px 0;
 }
 
-.app-connect-grid {
+.mcp-layer .section-header,
+.features .section-header {
+  margin-bottom: 38px;
+}
+
+.ai-access-panel {
   display: grid;
-  gap: 22px;
-}
-
-.app-connect-card {
+  gap: 24px;
   padding: 28px;
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  background: var(--color-bg);
+  background:
+    linear-gradient(135deg, rgba(249,115,22,0.08), rgba(124,58,237,0.07)),
+    var(--color-bg);
   box-shadow: 0 16px 40px rgba(28,25,23,0.07);
 }
 
-.app-connect-card__header {
+.ai-access-main {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 22px;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.app-connect-card__header span {
+.access-label {
+  color: var(--color-primary);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.ai-access-main h3 {
+  margin-top: 8px;
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  line-height: 1.12;
+}
+
+.ai-access-main p {
+  margin: 12px 0 22px;
+  max-width: 520px;
+  color: var(--color-text-light);
+  line-height: 1.65;
+}
+
+.ai-access-options {
+  display: grid;
+  gap: 12px;
+}
+
+.access-option {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.access-option--fitforce {
+  border-color: rgba(124,58,237,0.18);
+}
+
+.access-option__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.access-option h4 {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.access-option p {
+  margin-top: 4px;
   color: var(--color-text-light);
   font-size: 0.9rem;
-  font-weight: 700;
-}
-
-.app-connect-card__header h3 {
-  margin-top: 2px;
-  font-size: 1.35rem;
-  line-height: 1.25;
-}
-
-.setup-list {
-  display: grid;
-  gap: 10px;
-  margin: 0 0 24px;
-  padding-left: 22px;
-  color: var(--color-text-light);
-}
-
-.setup-list li {
-  padding-left: 4px;
-}
-
-.app-connect-card__button {
-  width: 100%;
+  line-height: 1.45;
 }
 
 .features {
   background: var(--color-bg-alt);
+}
+
+.tool-grid {
+  display: grid;
+  gap: 14px;
 }
 
 .tool-card,
@@ -1458,11 +1528,34 @@ body {
   border-color: var(--color-border);
 }
 
+.tool-card {
+  min-height: 0;
+  padding: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(28,25,23,0.05);
+}
+
 .tool-card span {
+  display: inline-flex;
+  margin-bottom: 10px;
   color: var(--color-primary);
   font-family: var(--font-family);
+  font-size: 0.78rem;
+  font-weight: 800;
   text-transform: none;
   letter-spacing: 0;
+}
+
+.tool-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.12rem;
+  line-height: 1.25;
+}
+
+.tool-card p {
+  color: var(--color-text-light);
+  line-height: 1.6;
 }
 
 .tool-card--accent {
@@ -1505,56 +1598,52 @@ body {
     grid-template-columns: 1.02fr 0.98fr;
   }
 
-  .assistant-choice-grid {
-    grid-template-columns: 1fr 1fr;
+  .ai-access-panel {
+    grid-template-columns: 0.92fr 1.08fr;
+    align-items: center;
   }
 
-  .app-connect-grid {
-    grid-template-columns: 1fr 1fr;
+  .tool-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 760px) {
   .hero {
-    padding: 88px 0 54px;
+    padding: 88px 0 46px;
   }
 
   .hero__title {
-    font-size: clamp(2.35rem, 10.8vw, 3rem);
+    font-size: clamp(2.25rem, 10.2vw, 2.85rem);
     letter-spacing: -0.035em;
+  }
+
+  .hero__subtitle {
+    font-size: 1rem;
+    line-height: 1.55;
   }
 
   .hero__connect {
     min-height: auto;
-    padding: 18px;
+    padding: 22px;
   }
 
-  .hero__connect::before,
-  .hero__connect::after {
-    display: none;
+  .preview-topbar,
+  .preview-grid,
+  .assistant-rail {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 
-  .fitforce-hub {
-    margin: 18px auto 0;
+  .preview-card {
+    padding: 12px;
   }
 
-  .hero__connect::before {
-    display: block;
-    top: 248px;
-    width: 2px;
-    height: 176px;
-    background: linear-gradient(to bottom, rgba(249,115,22,0.32), rgba(124,58,237,0.32));
+  .preview-card strong {
+    font-size: 0.94rem;
   }
 
-  .connection-label {
-    margin-top: 14px;
-  }
-
-  .assistant-card {
-    align-items: flex-start;
-  }
-
-  .app-connect-card {
+  .ai-access-panel {
     padding: 22px;
   }
 }
