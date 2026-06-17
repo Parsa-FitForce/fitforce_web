@@ -33,6 +33,7 @@
         '<span class="nav__hamburger-line"></span>' +
       '</button>' +
       '<div class="nav__menu" id="nav-menu">' +
+        '<a href="' + prefix + '#mcp" class="nav__link">AI Apps</a>' +
         '<a href="' + prefix + '#features" class="nav__link">Features</a>' +
         '<a href="' + prefix + '#how" class="nav__link">How It Works</a>' +
         '<a href="' + prefix + '#faq" class="nav__link">FAQ</a>' +

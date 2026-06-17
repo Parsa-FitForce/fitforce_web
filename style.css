@@ -987,6 +987,7 @@ input { font: inherit; }
 
 .footer__links {
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
   font-size: 0.9rem;
 }
@@ -1124,4 +1125,450 @@ input { font: inherit; }
   .final-cta__title { font-size: 2.5rem; }
 
   .step__connector { width: 80px; }
+}
+
+/* ============================================
+   Trainer-first AI apps direction
+   Restores FitForce light brand palette
+   ============================================ */
+
+:root {
+  --color-primary: #7C3AED;
+  --color-primary-dark: #6D28D9;
+  --color-primary-light: #A78BFA;
+  --color-accent: #F97316;
+  --color-accent-light: #FB923C;
+  --color-rose: #E11D48;
+  --color-bg: #FAFAF9;
+  --color-bg-alt: #F5F5F4;
+  --color-text: #1C1917;
+  --color-text-light: #57534E;
+  --color-border: #E7E5E4;
+  --gradient-brand: linear-gradient(135deg, #F97316 0%, #E11D48 48%, #7C3AED 100%);
+  --gradient-dark: linear-gradient(135deg, #24100A 0%, #381338 50%, #1D1235 100%);
+}
+
+body {
+  background: var(--color-bg);
+}
+
+.nav,
+.nav.is-scrolled {
+  background: rgba(250,250,249,0.9);
+}
+
+.hero {
+  padding: 124px 0 72px;
+  color: var(--color-text);
+  text-align: left;
+  background:
+    linear-gradient(115deg, rgba(249,115,22,0.12) 0%, transparent 38%),
+    linear-gradient(295deg, rgba(124,58,237,0.12) 0%, transparent 42%),
+    var(--color-bg);
+}
+
+.hero::before {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(28,25,23,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28,25,23,0.045) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+  pointer-events: none;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  display: grid;
+  gap: 44px;
+  align-items: center;
+}
+
+.hero__copy {
+  max-width: 640px;
+}
+
+.hero__badge {
+  color: var(--color-primary-dark);
+  background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(249,115,22,0.1));
+  border-color: rgba(124,58,237,0.18);
+  font-family: var(--font-family);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.hero__badge::before {
+  background: var(--color-accent);
+}
+
+.hero__title {
+  max-width: 660px;
+  color: var(--color-text);
+  font-size: clamp(2.8rem, 7vw, 5.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.hero__subtitle {
+  max-width: 600px;
+  color: var(--color-text-light);
+}
+
+.hero__form {
+  margin: 0;
+}
+
+.form-group {
+  background: #fff;
+  box-shadow: 0 16px 40px rgba(124,58,237,0.12), 0 12px 28px rgba(249,115,22,0.08);
+}
+
+.hero__proof {
+  color: var(--color-text-light);
+}
+
+.hero__connect {
+  position: relative;
+  min-height: 470px;
+  padding: 28px;
+  border-radius: 8px;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--gradient-brand) border-box;
+  border: 2px solid transparent;
+  box-shadow: 0 24px 70px rgba(28,25,23,0.12);
+  overflow: hidden;
+}
+
+.hero__connect::before,
+.hero__connect::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: min(280px, calc(100% - 80px));
+  height: 2px;
+  background: linear-gradient(to right, rgba(249,115,22,0.4), rgba(124,58,237,0.4));
+  transform: translateX(-50%);
+}
+
+.hero__connect::before {
+  top: 126px;
+}
+
+.hero__connect::after {
+  top: 258px;
+  width: 2px;
+  height: 86px;
+}
+
+.assistant-choice-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 14px;
+}
+
+.assistant-card,
+.fitforce-hub,
+.connection-label,
+.task-strip {
+  position: relative;
+  z-index: 1;
+}
+
+.assistant-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--shadow-md);
+}
+
+.assistant-card__logo {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+}
+
+.assistant-card__logo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.assistant-card__logo--claude,
+.app-connect-card:first-child .assistant-card__logo {
+  padding: 8px;
+  border-radius: 8px;
+  background: #D97757;
+}
+
+.assistant-card__logo--chatgpt,
+.app-connect-card:nth-child(2) .assistant-card__logo {
+  overflow: hidden;
+  border-radius: 8px;
+  background: #050606;
+}
+
+.assistant-card span {
+  display: block;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.assistant-card p {
+  margin-top: 2px;
+  max-width: 230px;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.connection-label {
+  width: max-content;
+  margin: 20px auto 0;
+  padding: 8px 12px;
+  border: 1px solid rgba(124,58,237,0.16);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.86);
+  color: var(--color-text-light);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.fitforce-hub {
+  width: min(260px, 100%);
+  margin: 26px auto 0;
+  padding: 24px;
+  text-align: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(249,115,22,0.1), rgba(225,29,72,0.08), rgba(124,58,237,0.1));
+  border: 1px solid rgba(124,58,237,0.16);
+}
+
+.fitforce-hub svg {
+  margin: 0 auto 10px;
+}
+
+.fitforce-hub strong,
+.fitforce-hub span {
+  display: block;
+}
+
+.fitforce-hub strong {
+  font-size: 1.25rem;
+}
+
+.fitforce-hub span {
+  margin-top: 6px;
+  color: var(--color-text-light);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.task-strip {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.task-strip span {
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--color-text-light);
+  background: var(--color-bg-alt);
+  font-size: 0.88rem;
+}
+
+.section-kicker {
+  color: var(--color-rose);
+  font-family: var(--font-family);
+  letter-spacing: 0.02em;
+}
+
+.mcp-layer {
+  background: #fff;
+}
+
+.app-connect-grid {
+  display: grid;
+  gap: 22px;
+}
+
+.app-connect-card {
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  box-shadow: 0 16px 40px rgba(28,25,23,0.07);
+}
+
+.app-connect-card__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.app-connect-card__header span {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.app-connect-card__header h3 {
+  margin-top: 2px;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.setup-list {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 24px;
+  padding-left: 22px;
+  color: var(--color-text-light);
+}
+
+.setup-list li {
+  padding-left: 4px;
+}
+
+.app-connect-card__button {
+  width: 100%;
+}
+
+.features {
+  background: var(--color-bg-alt);
+}
+
+.tool-card,
+.mcp-card {
+  background: #fff;
+  border-color: var(--color-border);
+}
+
+.tool-card span {
+  color: var(--color-primary);
+  font-family: var(--font-family);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.tool-card--accent {
+  background: var(--gradient-brand);
+}
+
+.tool-card--accent h3,
+.tool-card--accent p,
+.tool-card--accent span {
+  color: #fff;
+}
+
+.flow__item {
+  background: #fff;
+}
+
+.flow__mark {
+  background: var(--gradient-brand);
+  font-family: var(--font-family);
+}
+
+.stats {
+  background: var(--gradient-dark);
+}
+
+.stats .section-kicker {
+  color: var(--color-accent-light);
+}
+
+.final-cta {
+  background: var(--gradient-dark);
+}
+
+.footer {
+  background: #100A18;
+}
+
+@media (min-width: 860px) {
+  .hero__inner {
+    grid-template-columns: 1.02fr 0.98fr;
+  }
+
+  .assistant-choice-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .app-connect-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding: 88px 0 54px;
+  }
+
+  .hero__title {
+    font-size: clamp(2.35rem, 10.8vw, 3rem);
+    letter-spacing: -0.035em;
+  }
+
+  .hero__connect {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .hero__connect::before,
+  .hero__connect::after {
+    display: none;
+  }
+
+  .fitforce-hub {
+    margin: 18px auto 0;
+  }
+
+  .hero__connect::before {
+    display: block;
+    top: 248px;
+    width: 2px;
+    height: 176px;
+    background: linear-gradient(to bottom, rgba(249,115,22,0.32), rgba(124,58,237,0.32));
+  }
+
+  .connection-label {
+    margin-top: 14px;
+  }
+
+  .assistant-card {
+    align-items: flex-start;
+  }
+
+  .app-connect-card {
+    padding: 22px;
+  }
+}
+
+@media (min-width: 430px) and (max-width: 760px) {
+  .hero .form-group {
+    flex-direction: row;
+  }
+
+  .hero .form__input {
+    border-right: none;
+  }
+
+  .hero .btn--form {
+    margin-top: 0;
+  }
 }
