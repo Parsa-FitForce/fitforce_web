@@ -81,6 +81,12 @@ if [ -d "blog" ]; then
   cp blog/*.html blog/*.css "$TMPDIR/blog/" 2>/dev/null || true
 fi
 
+# Copy static assets such as downloaded assistant logos
+if [ -d "assets" ]; then
+  mkdir -p "$TMPDIR/assets"
+  cp assets/* "$TMPDIR/assets/" 2>/dev/null || true
+fi
+
 aws s3 sync "$TMPDIR/" "s3://$BUCKET_NAME/" \
   --region "$REGION" \
   --delete \
