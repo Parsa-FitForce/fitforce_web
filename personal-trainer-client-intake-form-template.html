@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Personal Trainer Client Intake Form Template — FitForce</title>
+  <meta name="description" content="A free personal trainer client intake form template covering goals, health history, preferences, availability, emergency contact, coaching expectations, and how to organize intake in FitForce.">
+
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.fitforce.com/personal-trainer-client-intake-form-template">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.fitforce.com/personal-trainer-client-intake-form-template">
+  <meta property="og:title" content="Free Personal Trainer Client Intake Form Template">
+  <meta property="og:description" content="A practical intake form template independent trainers can copy, print, or adapt for onboarding new clients.">
+  <meta property="og:image" content="https://www.fitforce.com/og-image.png">
+  <meta property="og:site_name" content="FitForce">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Personal Trainer Client Intake Form Template">
+  <meta name="twitter:description" content="A practical intake form template independent trainers can copy, print, or adapt for onboarding new clients.">
+  <meta name="twitter:image" content="https://www.fitforce.com/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#E11D48">
+
+  <link rel="preload" href="/style.css" as="style">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .template-hero {
+      padding: 132px 0 64px;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(249, 115, 22, 0.08)), var(--color-bg);
+    }
+
+    .template-hero__grid {
+      display: grid;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .template-hero__eyebrow {
+      display: inline-flex;
+      margin-bottom: 16px;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(124, 58, 237, 0.1);
+      color: var(--color-primary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .template-hero__title {
+      max-width: 760px;
+      margin-bottom: 18px;
+      color: var(--color-text);
+      font-size: clamp(2.25rem, 6vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+      font-weight: 800;
+    }
+
+    .template-hero__subtitle {
+      max-width: 660px;
+      margin-bottom: 28px;
+      color: var(--color-text-light);
+      font-size: 1.12rem;
+      line-height: 1.75;
+    }
+
+    .template-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .template-preview {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .template-preview__bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #17121f;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .template-preview__body {
+      display: grid;
+      gap: 12px;
+      padding: 22px;
+    }
+
+    .preview-line {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 10px;
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .preview-line span:last-child {
+      min-height: 18px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .template-section {
+      padding: 76px 0;
+      background: var(--color-bg);
+    }
+
+    .template-section--alt {
+      background: var(--color-bg-alt);
+    }
+
+    .template-section__head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .template-section__title {
+      margin-bottom: 12px;
+      color: var(--color-text);
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      font-weight: 800;
+    }
+
+    .template-section__intro {
+      color: var(--color-text-light);
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .form-template {
+      display: grid;
+      gap: 18px;
+    }
+
+    .form-block {
+      padding: 24px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+    }
+
+    .form-block h3 {
+      margin-bottom: 14px;
+      color: var(--color-text);
+      font-size: 1.22rem;
+      letter-spacing: -0.01em;
+    }
+
+    .field-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+      color: var(--color-text-light);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .field::after {
+      content: "";
+      display: block;
+      min-height: 34px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: #fff;
+    }
+
+    .field--wide::after {
+      min-height: 82px;
+    }
+
+    .check-grid {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-grid li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 10px;
+      color: var(--color-text-light);
+      line-height: 1.55;
+    }
+
+    .check-grid li::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      border: 2px solid var(--color-border);
+      border-radius: 5px;
+      background: #fff;
+    }
+
+    .workflow-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .workflow-card {
+      padding: 24px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+    }
+
+    .workflow-card strong {
+      display: inline-flex;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .workflow-card h3 {
+      margin-bottom: 10px;
+      color: var(--color-text);
+      font-size: 1.18rem;
+    }
+
+    .workflow-card p {
+      color: var(--color-text-light);
+      line-height: 1.7;
+    }
+
+    .resource-note {
+      padding: 28px;
+      border-radius: var(--radius-md);
+      background: #17121f;
+      color: #fff;
+    }
+
+    .resource-note h2 {
+      margin-bottom: 10px;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+    }
+
+    .resource-note p {
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.7;
+    }
+
+    @media (min-width: 860px) {
+      .template-hero__grid {
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      }
+
+      .form-template {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .form-block--wide {
+        grid-column: 1 / -1;
+      }
+
+      .field-grid--two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .workflow-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media print {
+      .nav,
+      .footer,
+      .template-actions,
+      .template-preview,
+      .final-cta {
+        display: none !important;
+      }
+
+      .template-hero,
+      .template-section {
+        padding: 24px 0;
+        background: #fff !important;
+      }
+
+      .form-block,
+      .resource-note {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G14GHXQ5FF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G14GHXQ5FF');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Free Personal Trainer Client Intake Form Template",
+    "description": "A free personal trainer client intake form template covering goals, health history, preferences, availability, emergency contact, coaching expectations, and how to organize intake in FitForce.",
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-02",
+    "publisher": {
+      "@type": "Organization",
+      "name": "FitForce",
+      "url": "https://www.fitforce.com"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <nav id="nav"></nav>
+  <script src="/nav.js"></script>
+
+  <main>
+    <header class="template-hero">
+      <div class="container template-hero__grid">
+        <div>
+          <span class="template-hero__eyebrow">Free template</span>
+          <h1 class="template-hero__title">Personal Trainer Client Intake Form Template</h1>
+          <p class="template-hero__subtitle">Use this practical intake form to collect the information independent trainers need before the first session: goals, health background, availability, communication preferences, and expectations. FitForce turns the same intake into an organized client profile.</p>
+          <div class="template-actions">
+            <a href="#template" class="btn btn--primary">Use the Template</a>
+            <button class="btn btn--secondary" type="button" onclick="window.print()">Print Template</button>
+            <a href="/?source=intake_template#signup" class="btn btn--secondary">Organize Intake in FitForce</a>
+          </div>
+        </div>
+
+        <aside class="template-preview" aria-label="Client intake form preview">
+          <div class="template-preview__bar">
+            <span>Client intake</span>
+            <span>New client</span>
+          </div>
+          <div class="template-preview__body">
+            <div class="preview-line"><strong>Name</strong><span></span></div>
+            <div class="preview-line"><strong>Goal</strong><span></span></div>
+            <div class="preview-line"><strong>Schedule</strong><span></span></div>
+            <div class="preview-line"><strong>Restrictions</strong><span></span></div>
+            <div class="preview-line"><strong>Emergency</strong><span></span></div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section class="template-section" id="template">
+      <div class="container">
+        <div class="template-section__head">
+          <h2 class="template-section__title">Copy or Print This Intake Form</h2>
+          <p class="template-section__intro">This template is not medical advice, a liability waiver, or a substitute for local legal requirements. It is a starting point for collecting cleaner client information before coaching begins.</p>
+        </div>
+
+        <div class="form-template">
+          <section class="form-block">
+            <h3>Client Details</h3>
+            <div class="field-grid field-grid--two">
+              <label class="field">Full name</label>
+              <label class="field">Date of birth</label>
+              <label class="field">Email</label>
+              <label class="field">Phone</label>
+              <label class="field">Preferred pronouns</label>
+              <label class="field">Preferred contact method</label>
+            </div>
+          </section>
+
+          <section class="form-block">
+            <h3>Emergency Contact</h3>
+            <div class="field-grid">
+              <label class="field">Name</label>
+              <label class="field">Relationship</label>
+              <label class="field">Phone number</label>
+            </div>
+          </section>
+
+          <section class="form-block form-block--wide">
+            <h3>Goals and Training Background</h3>
+            <div class="field-grid">
+              <label class="field field--wide">Primary goals for the next 90 days</label>
+              <label class="field field--wide">Previous training experience</label>
+              <label class="field field--wide">Activities, sports, or movements the client enjoys</label>
+              <label class="field field--wide">What has made consistency difficult in the past?</label>
+            </div>
+          </section>
+
+          <section class="form-block">
+            <h3>Health and Readiness</h3>
+            <ul class="check-grid">
+              <li>Any injuries, surgeries, pain, or movement limitations?</li>
+              <li>Any medications or conditions that could affect exercise?</li>
+              <li>Has a doctor advised the client to limit physical activity?</li>
+              <li>Does the client need clearance before starting?</li>
+            </ul>
+          </section>
+
+          <section class="form-block">
+            <h3>Schedule and Logistics</h3>
+            <div class="field-grid">
+              <label class="field">Preferred training days</label>
+              <label class="field">Preferred session times</label>
+              <label class="field">Training location</label>
+              <label class="field">Session frequency goal</label>
+            </div>
+          </section>
+
+          <section class="form-block">
+            <h3>Communication Preferences</h3>
+            <ul class="check-grid">
+              <li>Email</li>
+              <li>Text message</li>
+              <li>Phone call</li>
+              <li>In-app message</li>
+              <li>Weekly progress check-in</li>
+            </ul>
+          </section>
+
+          <section class="form-block">
+            <h3>Admin Checklist</h3>
+            <ul class="check-grid">
+              <li>Liability waiver signed</li>
+              <li>PAR-Q or health screening completed</li>
+              <li>Payment method or package selected</li>
+              <li>Cancellation policy reviewed</li>
+              <li>Photo/testimonial permission recorded separately</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="template-section">
+      <div class="container">
+        <div class="template-section__head">
+          <h2 class="template-section__title">From Intake Form to Client Profile</h2>
+          <p class="template-section__intro">The printable intake form is a starting point. FitForce is for trainers who want onboarding answers connected to client records, scheduling, waivers, programming, and follow-up.</p>
+        </div>
+
+        <div class="workflow-grid">
+          <article class="workflow-card">
+            <strong>Client records</strong>
+            <h3>Keep intake with the client</h3>
+            <p>Store goals, contact details, emergency contact, preferences, and onboarding notes directly on the client profile instead of leaving them in a PDF or inbox thread.</p>
+          </article>
+          <article class="workflow-card">
+            <strong>Health context</strong>
+            <h3>Bring readiness details into coaching</h3>
+            <p>Track injuries, limitations, medical notes, doctor clearance needs, and training history where you can reference them before sessions and program updates.</p>
+          </article>
+          <article class="workflow-card">
+            <strong>Admin checklist</strong>
+            <h3>Know what is done before the first session</h3>
+            <p>Keep waiver status, PAR-Q or screening notes, payment setup, cancellation policy review, and permission items close to the client record.</p>
+          </article>
+          <article class="workflow-card">
+            <strong>AI-ready onboarding</strong>
+            <h3>Use intake to power better follow-up</h3>
+            <p>Once intake is structured in FitForce, the assistant can help summarize client context, prepare follow-ups, and turn onboarding notes into next steps.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="template-section template-section--alt">
+      <div class="container">
+        <div class="resource-note">
+          <h2>Why This Helps Trainers</h2>
+          <p>Most client-management problems start with scattered onboarding. A consistent intake form makes it easier to personalize workouts, avoid missing important context, track permissions, and prepare your business for better follow-ups or AI-assisted admin later. FitForce keeps that information connected instead of buried in a one-off document.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container final-cta__inner">
+        <h2 class="final-cta__title">Organize Client Intake in FitForce</h2>
+        <p class="final-cta__subtitle">Join early access for structured client profiles, intake notes, scheduling, waivers, and AI-assisted follow-up.</p>
+        <a href="/?source=intake_template#signup" class="btn btn--primary">Join Early Access</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="/" class="nav__logo">
+          <svg class="nav__logo-icon" width="28" height="28" viewBox="0 0 512 512" fill="none" aria-hidden="true">
+            <defs><linearGradient id="logo-g2" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse"><stop stop-color="#F97316"/><stop offset=".5" stop-color="#E11D48"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+            <rect x="20" y="20" width="472" height="472" rx="100" fill="url(#logo-g2)"/>
+            <rect x="20" y="20" width="472" height="472" rx="100" fill="#06001a" opacity="0.18"/>
+            <path d="M148,260 L256,152 L364,260" stroke="#fff" stroke-width="52" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.95"/>
+            <path d="M148,360 L256,252 L364,360" stroke="#fff" stroke-width="42" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.5"/>
+          </svg>
+          <span>FitForce</span>
+        </a>
+        <p class="footer__tagline">The business platform for fitness professionals.</p>
+      </div>
+      <div class="footer__links">
+        <a href="mailto:hello@fitforce.com">Contact</a>
+        <a href="/#features">Features</a>
+        <a href="/#how">How It Works</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 FitForce. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

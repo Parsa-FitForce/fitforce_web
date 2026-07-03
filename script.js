@@ -11,6 +11,15 @@
   var SUPPORT_URL = 'https://support.persianpages.com';
   var APP_ID = 'fitforce';
 
+  function signupSource() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      return params.get('source') || params.get('utm_source') || document.body.getAttribute('data-signup-source') || '';
+    } catch (e) {
+      return document.body.getAttribute('data-signup-source') || '';
+    }
+  }
+
   // --- Scroll animations (IntersectionObserver) ---
   var animatedElements = document.querySelectorAll('[data-animate]');
 
@@ -93,6 +102,7 @@
     var form = document.getElementById(formId);
     var emailInput = document.getElementById(emailId);
     var messageEl = document.getElementById(messageId);
+    var trapInput = form ? form.querySelector('.form__trap') : null;
 
     if (!form) return;
 
@@ -122,7 +132,12 @@
       fetch(SUPPORT_URL + '/api/notifications/early-access', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ appId: APP_ID, email: email })
+        body: JSON.stringify({
+          appId: APP_ID,
+          email: email,
+          source: signupSource(),
+          company: trapInput ? trapInput.value : ''
+        })
       })
         .then(function (res) {
           return res.json().then(function (data) {
