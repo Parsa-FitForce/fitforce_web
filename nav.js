@@ -38,11 +38,11 @@
         '<a href="' + prefix + '#how" class="nav__link">How It Works</a>' +
         '<a href="' + prefix + '#faq" class="nav__link">FAQ</a>' +
         '<a href="/blog/" class="nav__link">Blog</a>' +
-        '<a href="' + prefix + '#signup" class="btn btn--sm btn--nav">' +
-          '<span class="btn__short">Sign Up</span>' +
-          '<span class="btn__full">Get Early Access</span>' +
+        '<a href="https://app.fitforce.com/register?utm_source=fitforce_web&utm_medium=nav&utm_campaign=app_launch" class="btn btn--sm btn--nav" data-app-cta="nav">' +
+          '<span class="btn__short">Start free</span>' +
+          '<span class="btn__full">Start using FitForce</span>' +
         '</a>' +
-        '<a href="https://app.fitforce.com" class="btn btn--sm btn--nav-outline">Open App</a>' +
+        '<a href="https://app.fitforce.com/login" class="btn btn--sm btn--nav-outline">Log in</a>' +
       '</div>' +
     '</div>';
 
@@ -72,7 +72,7 @@
     toggle.setAttribute('aria-expanded', String(isOpen));
   });
 
-  menu.querySelectorAll('.nav__link, .btn--nav').forEach(function (link) {
+  menu.querySelectorAll('.nav__link, .btn--nav, .btn--nav-outline').forEach(function (link) {
     link.addEventListener('click', closeMenu);
   });
 
@@ -97,4 +97,15 @@
       });
     });
   }
+
+  // Track every link that sends a reader into the app. Delegation also covers
+  // product CTAs that appear later in the page, outside the shared navigation.
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest('[data-app-cta]');
+    if (!link || typeof window.gtag !== 'function') return;
+    window.gtag('event', 'app_cta_click', {
+      cta_location: link.getAttribute('data-app-cta') || 'unknown',
+      destination: link.getAttribute('href') || ''
+    });
+  });
 })();

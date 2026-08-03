@@ -454,6 +454,38 @@ input { font: inherit; }
   color: var(--color-text-light);
 }
 
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn--secondary {
+  padding: 13px 27px;
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.88);
+  color: var(--color-text);
+  box-shadow: 0 8px 24px rgba(28,25,23,0.06);
+}
+
+.btn--secondary:hover {
+  border-color: rgba(124,58,237,0.38);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 520px) {
+  .hero__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+}
+
 /* --- Section Header --- */
 .section-header {
   text-align: center;

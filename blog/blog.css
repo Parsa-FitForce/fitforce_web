@@ -26,6 +26,24 @@
   margin: 0 auto;
 }
 
+.blog-header__eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--color-primary);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blog-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
 /* --- Blog Post Grid --- */
 .blog-grid {
   display: grid;
@@ -35,6 +53,7 @@
 }
 
 .blog-card {
+  position: relative;
   background: #fff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -42,6 +61,17 @@
   transition: transform var(--transition), box-shadow var(--transition);
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 520px) {
+  .blog-header__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .blog-header__actions .btn {
+    width: 100%;
+  }
 }
 
 .blog-card:hover {
@@ -264,6 +294,171 @@
   font-style: italic;
 }
 
+/* --- Product-led editorial components --- */
+.product-note {
+  margin: 32px 0;
+  padding: 28px;
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, rgba(124,58,237,0.07), rgba(249,115,22,0.05)),
+    #fff;
+  box-shadow: 0 18px 50px rgba(124,58,237,0.08);
+}
+
+.product-note--ai {
+  background:
+    radial-gradient(circle at 92% 0%, rgba(249,115,22,0.14), transparent 36%),
+    linear-gradient(135deg, rgba(124,58,237,0.08), rgba(225,29,72,0.04)),
+    #fff;
+}
+
+.product-note__label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.product-note > strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-text);
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.product-note p {
+  margin: 0;
+  font-size: 0.96rem;
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 24px 0 32px;
+}
+
+.capability-grid > div {
+  display: grid;
+  gap: 5px;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+
+.capability-grid strong {
+  font-size: 0.98rem;
+}
+
+.capability-grid span {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.workflow-rail,
+.prompt-list {
+  list-style: none;
+  padding: 0 !important;
+  margin: 28px 0 36px !important;
+  counter-reset: workflow;
+}
+
+.workflow-rail li {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  margin: 0 0 0 17px;
+  padding: 0 0 26px 32px;
+  border-left: 1px solid rgba(124,58,237,0.24);
+}
+
+.workflow-rail li:last-child {
+  padding-bottom: 0;
+  border-left-color: transparent;
+}
+
+.workflow-rail li::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: -7px;
+  width: 13px;
+  height: 13px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 1px rgba(124,58,237,0.25);
+}
+
+.workflow-rail li strong,
+.workflow-rail li span {
+  display: block;
+}
+
+.workflow-rail li span {
+  color: var(--color-text-light);
+  font-size: 0.96rem;
+}
+
+.prompt-list li {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prompt-list li > span {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--color-primary);
+  background: rgba(124,58,237,0.08);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.prompt-list li p {
+  margin: 6px 0 0;
+  font-size: 0.94rem;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0 !important;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 32px;
+}
+
+.checklist li::before {
+  content: '✓';
+  position: absolute;
+  top: 1px;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--gradient-brand);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
 /* --- Article CTA --- */
 .article__cta {
   margin-top: 56px;
@@ -337,6 +532,10 @@
 
   .blog-header__title {
     font-size: 3rem;
+  }
+
+  .capability-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
